@@ -9,17 +9,20 @@ int main(int argc, char *argv[], char **envp)
     if_access = -1;
     i = 0;
     char *paths[] = {"/usr/local/bin/" ,"/usr/bin/","/bin/","/usr/sbin/","/sbin/","/usr/local/munki/"};
-
-    while (i != 6 &&  if_access == -1)
+    if(argc == 2)
     {
+        while (i != 6 &&  if_access == -1)
+        {
         
-        path = ft_strjoin(paths[i],argv[1]);
-        if_access = access(path,F_OK);
-        if(if_access == -1)
+            path = ft_strjoin(paths[i],argv[1]);
+            if_access = access(path,F_OK);
+            if(if_access == -1)
             free(path);
-        i++;
+            i++;
+        }
+        if (execve(path,&argv[1],envp) == -1)
+            perror("Could not execve");
     }
-    if (execve(path,&argv[1],envp) == -1)
-        perror("Could not execve");
+    
     return (0);
 }
