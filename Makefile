@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c
+FILES = ft_strjoin.c pipex.c ft_split.c
 
 AR = ar -rc
 
@@ -16,8 +16,6 @@ $(NAME):$(objets)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
 all:$(NAME)
-
-
 
 clean :
 	@$(RM) $(objets)
