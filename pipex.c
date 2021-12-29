@@ -58,17 +58,18 @@ int main(int argc, char *argv[], char **envp)
         path_finder(&path,c);
         if(id == 0)
         {
+            printf("%s\n" , "hii2");
             close(fd[t][0]);
-            dup2(fd[t][1],1);
+           // dup2(fd[t][1],1);
             close(fd[t][1]);
             if (execve(path,&c[0],envp) == -1)
             perror("Could not execve");
         }
-        dup2(fd[t][0],0);
-        close(fd[t][0]);
         waitpid(id, NULL,0);
         free(c);
         t++;
+        dup2(fd[t][0],0);
+        close(fd[t][0]);
     }
     t--;
     //creat_fille(argv[4]);
