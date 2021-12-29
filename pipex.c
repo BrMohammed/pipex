@@ -1,13 +1,12 @@
 #include "pipex.h"
 
-int creat_fille(char *argv)
+void creat_fille(char *argv)
 {
     int output;
 
     output = open(argv,O_RDWR | O_CREAT,0777);
-    dup2(output,1);
+    //dup2(output,1);
     close(output);
-    return(output);
 }
 void open_file(char *argv)
 {
@@ -52,10 +51,10 @@ int main(int argc, char *argv[], char **envp)
     pipe(fd[1]);
     int t = 0; 
     open_file(argv[1]);
-    while(t < 2)
+    while(t == 0)
     {
         id = fork();
-        c = ft_split(argv[t+2],' ');
+        c = ft_split(argv[t + 2],' ');
         path_finder(&path,c);
         if(id == 0)
         {
@@ -66,12 +65,14 @@ int main(int argc, char *argv[], char **envp)
             perror("Could not execve");
         }
         dup2(fd[t][0],0);
+        close(fd[t][0]);
         waitpid(id, NULL,0);
         free(c);
         t++;
     }
     t--;
-    creat_fille(argv[4]);
+    //creat_fille(argv[4]);
+    write(1,"\n",1);
     write(1,&fd[t][1],sizeof(fd[t][1]));
     return (0);   
 }
