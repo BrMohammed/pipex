@@ -99,6 +99,5 @@ int main(int argc, char *argv[])
         t++;
     }
     free(fd);
-    //system("leaks pipex");
     return (0);   
 }
