@@ -9,5 +9,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+void creat_fille(char *argv);
+void open_file(char *argv);
 
 #endif

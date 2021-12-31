@@ -1,23 +1,5 @@
 #include "pipex.h"
 
-void creat_fille(char *argv)
-{
-    int output;
-
-    output = open(argv,O_RDWR | O_CREAT,0777);
-    dup2(output,1);
-    close(output);
-}
-void open_file(char *argv)
-{
-    int input;
-
-    input =  open(argv,O_RDWR ,0777);
-    if (input == -1)
-        return;
-    dup2(input,0);
-    close(input);
-}
 void path_finder(char **path,char **c)
 {
     int i;
@@ -65,12 +47,37 @@ int **count(int *i,char **argv)
     return (fd);
 }
 
-int main(int argc, char *argv[], char **envp)
+void condetion(int t,int i,char **argv,int **fd)
 {
-    char *path;
-    (void)argc;
-    char **c;
     int id;
+    char *path;
+    char **c;
+
+    id = fork();
+    c = ft_split(argv[t + 2],' ');
+    path_finder(&path,c);
+    if(id == 0)
+    {
+        if(t < i - 1)
+        {
+            close(fd[t][0]);
+            dup2(fd[t][1],1);
+             close(fd[t][1]);
+             if (execve(path,&c[0],0) == -1)
+                perror("Could not execve");
+        }
+        if(t == i - 1)
+        {
+            creat_fille(argv[i + 2]);
+            if (execve(path,&c[0],0) == -1)
+                perror("Could not execve");
+        }
+    }
+    free(c);
+}
+int main(int argc, char *argv[])
+{
+    (void)argc;
     int i;
     int **fd;
     int t;
@@ -84,28 +91,8 @@ int main(int argc, char *argv[], char **envp)
     open_file(argv[1]);
     while(t < i)
     {
-        id = fork();
-        c = ft_split(argv[t + 2],' ');
-        path_finder(&path,c);
-        if(id == 0)
-        {
-            if(t < i - 1)
-            {
-                close(fd[t][0]);
-                dup2(fd[t][1],1);
-                close(fd[t][1]);
-                if (execve(path,&c[0],envp) == -1)
-                    perror("Could not execve");
-            }
-            if(t == i - 1)
-            {
-                creat_fille(argv[i + 2]);
-                if (execve(path,&c[0],envp) == -1)
-                    perror("Could not execve");
-            }
-        }
-        waitpid(id, NULL,0);
-        free(c);
+        condetion(t,i,argv,fd);
+        waitpid(0, NULL,0);
         close(fd[t][1]);
         dup2(fd[t][0],0);
         close(fd[t][0]);
@@ -113,6 +100,5 @@ int main(int argc, char *argv[], char **envp)
     }
     free(fd);
     //system("leaks pipex");
-
     return (0);   
 }
