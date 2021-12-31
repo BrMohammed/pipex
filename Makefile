@@ -13,7 +13,7 @@ RM = rm -f
 objets = $(FILES:.c=.o)
 
 $(NAME):$(objets)
-	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
+	$(CC) $(CFLAGS)  -o $(NAME) $(FILES) -g
 
 all:$(NAME)
 

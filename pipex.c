@@ -111,5 +111,8 @@ int main(int argc, char *argv[], char **envp)
         close(fd[t][0]);
         t++;
     }
+    free(fd);
+    //system("leaks pipex");
+
     return (0);   
 }
