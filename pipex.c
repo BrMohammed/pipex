@@ -35,6 +35,35 @@ void path_finder(char **path,char **c)
         i++;
     }
 }
+int **count(int *i,char **argv)
+{
+    int t;
+    int **fd;
+
+    t = 0;
+    while (argv[*i] != NULL)
+        i++;
+    *i -= 3 ; 
+    fd = (int **)malloc(sizeof(int *) * (*i + 1));
+    fd[*i] = NULL;
+	if (!fd)
+		return (0);
+    while(t < *i)
+    {
+        fd[t] = (int *)malloc(sizeof(int) * 2 + 1);
+        if (!fd[t])
+		    return (0);
+        fd[t][2] = '\0';
+        t++;
+    }
+    t = 0;
+    while (t < *i)
+    {
+        pipe(fd[t]);
+        t++;
+    }
+    return (fd);
+}
 
 int main(int argc, char *argv[], char **envp)
 {
@@ -42,21 +71,16 @@ int main(int argc, char *argv[], char **envp)
     (void)argc;
     char **c;
     int id;
-    int i = 0;
+    int i;
+    int **fd;
+    int t;
     //fd[0]read;
     //fd[1]write;
     //0 strin read
     //1 strout write 
-    int t = 0;
-    while (argv[i] != NULL)
-        i++;
-    i -= 3 ;
-    int fd[i][2];
-    while (t < i)
-    {
-        pipe(fd[t]);
-        t++;
-    }
+    
+    i = 0;
+    fd = count(&i,argv);
     t = 0;
     open_file(argv[1]);
     while(t < i)
