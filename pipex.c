@@ -47,14 +47,17 @@ int main(int argc, char *argv[], char **envp)
     //fd[1]write;
     //0 strin read
     //1 strout write 
-    int t;
+    int t = 0;
     while (argv[i] != NULL)
         i++;
     i -= 3 ;
     printf("%d\n" , i);
     int fd[i][2];
-    pipe(fd[0]);
-    pipe(fd[1]);
+    while (t < i)
+    {
+        pipe(fd[t]);
+        t++;
+    }
     t = 0;
     open_file(argv[1]);
     while(t < i)
@@ -64,7 +67,7 @@ int main(int argc, char *argv[], char **envp)
         path_finder(&path,c);
         if(id == 0)
         {
-            if(t == 0)
+            if(t < i - 1)
             {
                 printf("%s\n" , "hii2");
                 close(fd[t][0]);
@@ -73,10 +76,10 @@ int main(int argc, char *argv[], char **envp)
                 if (execve(path,&c[0],envp) == -1)
                     perror("Could not execve");
             }
-            if(t == 1)
+            if(t == i - 1)
             {
                 printf("%s\n" , "hii3");
-                creat_fille(argv[4]);
+                creat_fille(argv[i + 2]);
                 if (execve(path,&c[0],envp) == -1)
                     perror("Could not execve");
             }
