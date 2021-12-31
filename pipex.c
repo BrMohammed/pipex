@@ -51,7 +51,6 @@ int main(int argc, char *argv[], char **envp)
     while (argv[i] != NULL)
         i++;
     i -= 3 ;
-    printf("%d\n" , i);
     int fd[i][2];
     while (t < i)
     {
@@ -69,7 +68,6 @@ int main(int argc, char *argv[], char **envp)
         {
             if(t < i - 1)
             {
-                printf("%s\n" , "hii2");
                 close(fd[t][0]);
                 dup2(fd[t][1],1);
                 close(fd[t][1]);
@@ -78,7 +76,6 @@ int main(int argc, char *argv[], char **envp)
             }
             if(t == i - 1)
             {
-                printf("%s\n" , "hii3");
                 creat_fille(argv[i + 2]);
                 if (execve(path,&c[0],envp) == -1)
                     perror("Could not execve");
