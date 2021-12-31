@@ -42,7 +42,7 @@ int **count(int *i,char **argv)
 
     t = 0;
     while (argv[*i] != NULL)
-        i++;
+        *i = *i  + 1;
     *i -= 3 ; 
     fd = (int **)malloc(sizeof(int *) * (*i + 1));
     fd[*i] = NULL;
@@ -78,7 +78,6 @@ int main(int argc, char *argv[], char **envp)
     //fd[1]write;
     //0 strin read
     //1 strout write 
-    
     i = 0;
     fd = count(&i,argv);
     t = 0;
