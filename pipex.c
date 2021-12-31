@@ -5,7 +5,7 @@ void creat_fille(char *argv)
     int output;
 
     output = open(argv,O_RDWR | O_CREAT,0777);
-    //dup2(output,1);
+    dup2(output,1);
     close(output);
 }
 void open_file(char *argv)
@@ -39,41 +39,54 @@ void path_finder(char **path,char **c)
 int main(int argc, char *argv[], char **envp)
 {
     char *path;
-    int fd[2][2];
     (void)argc;
     char **c;
     int id;
+    int i = 0;
     //fd[0]read;
     //fd[1]write;
     //0 strin read
-    //1 strout write
+    //1 strout write 
+    int t;
+    while (argv[i] != NULL)
+        i++;
+    i -= 3 ;
+    printf("%d\n" , i);
+    int fd[i][2];
     pipe(fd[0]);
     pipe(fd[1]);
-    int t = 0; 
+    t = 0;
     open_file(argv[1]);
-    while(t == 0)
+    while(t < i)
     {
         id = fork();
         c = ft_split(argv[t + 2],' ');
         path_finder(&path,c);
         if(id == 0)
         {
-            printf("%s\n" , "hii2");
-            close(fd[t][0]);
-           // dup2(fd[t][1],1);
-            close(fd[t][1]);
-            if (execve(path,&c[0],envp) == -1)
-            perror("Could not execve");
+            if(t == 0)
+            {
+                printf("%s\n" , "hii2");
+                close(fd[t][0]);
+                dup2(fd[t][1],1);
+                close(fd[t][1]);
+                if (execve(path,&c[0],envp) == -1)
+                    perror("Could not execve");
+            }
+            if(t == 1)
+            {
+                printf("%s\n" , "hii3");
+                creat_fille(argv[4]);
+                if (execve(path,&c[0],envp) == -1)
+                    perror("Could not execve");
+            }
         }
         waitpid(id, NULL,0);
         free(c);
-        t++;
+        close(fd[t][1]);
         dup2(fd[t][0],0);
         close(fd[t][0]);
+        t++;
     }
-    t--;
-    //creat_fille(argv[4]);
-    write(1,"\n",1);
-    write(1,&fd[t][1],sizeof(fd[t][1]));
     return (0);   
 }
