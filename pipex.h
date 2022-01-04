@@ -11,5 +11,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 void creat_fille(char *argv);
 void open_file(char *argv);
+char	*ft_strnstr(const char *str, const char *find, size_t slen);
 
 #endif

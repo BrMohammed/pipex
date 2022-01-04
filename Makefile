@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c ft_split.c files.c
+FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c
 
 AR = ar -rc
 
