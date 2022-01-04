@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c
+FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c
 
 AR = ar -rc
 
@@ -27,7 +27,7 @@ re : fclean all
 
 
 #  github bigin
-# ./pipex infile "cat" "awk NR==1" "wc -L" outfile
+# ./pipex infile "cat" "awk NR==1" "wc -c" outfile
 
 ADD = git add .
 

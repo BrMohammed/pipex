@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/04 18:34:28 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/04 23:50:47 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,27 +112,61 @@ void condetion(int t,char **argv,int **fd,char **envp)
 	}
 	free(c);
 }
+/* $> ./pipex here_doc LIMITER cmd cmd1 file */
+/* cmd << LIMITER | cmd1 >> file */
+
+/*./pipex file1 cmd1 cmd2 file2*/
+
+void heredoc(char *argv)
+{
+    char r[10240];
+    int error;
+    char *input;
+
+    input = malloc(1);
+    input[0] = '\0';
+    while(ft_strcmp(argv,r) != -10)
+    { 
+        input = ft_strjoin(input,r);
+        write(1,"heredoc> ",9);
+        error = read(0,r,50);
+        r[error] = '\0';
+    }
+}
+
 int main(int argc, char *argv[], char **envp)
 {
-	(void)argc;
+	
 	int **fd;
 	int t;
+	//(void)argc;
 	//fd[0]read;
 	//fd[1]write;
 	//0 strin read
 	//1 strout write
 	fd = count(argv);
 	t = 0;
-	open_file(argv[1]);
-	while(t < i)
+	//open_file(argv[1]);
+	printf("%d\n",ft_strcmp(argv[1],"here_doc"));
+	if(ft_strcmp(argv[1],"here_doc") == 0)
 	{
-		condetion(t,argv,fd,envp);
-		waitpid(0, NULL,0);
-		close(fd[t][1]);
-		dup2(fd[t][0],0);
-		close(fd[t][0]);
-		t++;
+		heredoc(argv[2]);
+		t = 1;
 	}
-	free(fd);
-	return (0);   
+	if(argc > 4 && ft_strcmp(argv[1],"here_doc") == 0)
+	{
+		
+		while(t < i)
+		{
+			condetion(t,argv,fd,envp);
+			waitpid(0, NULL,0);
+			close(fd[t][1]);
+			dup2(fd[t][0],0);
+			close(fd[t][0]);
+			t++;
+		}
+		free(fd);
+	}
+	
+	return (0);
 }
