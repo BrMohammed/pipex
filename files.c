@@ -8,13 +8,11 @@ void creat_fille(char *argv)
     dup2(output,1);
     close(output);
 }
-void open_file(char *argv)
+int open_file(char *argv)
 {
     int input;
-
     input =  open(argv,O_RDWR ,0777);
-    if (input == -1)
-        return;
     dup2(input,0);
     close(input);
+    return(input);
 }

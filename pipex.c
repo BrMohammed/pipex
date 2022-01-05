@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/05 01:58:22 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/05 02:27:31 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ int main(int argc, char *argv[], char **envp)
 	
 	int **fd;
 	int t;
-	
 	//(void)argc;
 	//fd[0]read;
 	//fd[1]write;
@@ -179,7 +178,12 @@ int main(int argc, char *argv[], char **envp)
 	fd = count(argv);
 	if(argc > 4 )
 	{
-		open_file(argv[1]);
+		if (open_file(argv[1]) == -1)
+		{
+			perror(argv[1]);
+			exit(0);
+		}
+			
 		while(t < i)
 		{
 			condetion(t,argv,fd,envp);
