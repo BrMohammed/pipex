@@ -6,13 +6,14 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/04 23:50:47 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/05 01:34:04 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 int i;
+int fals;
 
 void	path_finder(char **path,char **c,char **envp)
 {
@@ -61,7 +62,12 @@ int **count(char **argv)
 	t = 0;
 	while (argv[i] != NULL)
 		i = i  + 1;
-	i -= 3 ; 
+	
+	if (fals == 0)
+		i -= 4;
+	else
+		i -= 3 ;
+		
 	fd = (int **)malloc(sizeof(int *) * (i + 1));
 	fd[i] = NULL;
 	if (!fd)
@@ -105,7 +111,10 @@ void condetion(int t,char **argv,int **fd,char **envp)
 		}
 		if(t == i - 1)
 		{
-			creat_fille(argv[i + 2]);
+			if(fals == 0)
+				creat_fille(argv[i + 3]);
+			else
+				creat_fille(argv[i + 2]);
 			if (execve(path,&c[0],envp) == -1)
 				perror("Could not execve");
 		}
@@ -119,19 +128,31 @@ void condetion(int t,char **argv,int **fd,char **envp)
 
 void heredoc(char *argv)
 {
-    char r[10240];
+ 	char r[10240];
     int error;
-    char *input;
-
-    input = malloc(1);
-    input[0] = '\0';
+    char *inputs;
+	
+    inputs = malloc(1);
+    inputs[0] = '\0';
+	r[0] ='\0';
     while(ft_strcmp(argv,r) != -10)
-    { 
-        input = ft_strjoin(input,r);
+    {
+        inputs = ft_strjoin(inputs,r);
         write(1,"heredoc> ",9);
         error = read(0,r,50);
         r[error] = '\0';
     }
+    error = 0;
+	int f = open("here_doc",O_RDWR | O_CREAT,0777);
+	if (inputs[error])
+	{
+		while (inputs[error])
+		{
+			write(f, &inputs[error], 1);
+			error++;
+		}
+	}
+    free(inputs);
 }
 
 int main(int argc, char *argv[], char **envp)
@@ -139,23 +160,24 @@ int main(int argc, char *argv[], char **envp)
 	
 	int **fd;
 	int t;
+	
 	//(void)argc;
 	//fd[0]read;
 	//fd[1]write;
 	//0 strin read
 	//1 strout write
-	fd = count(argv);
+	fals = 1;
 	t = 0;
-	//open_file(argv[1]);
-	printf("%d\n",ft_strcmp(argv[1],"here_doc"));
 	if(ft_strcmp(argv[1],"here_doc") == 0)
 	{
 		heredoc(argv[2]);
-		t = 1;
+		t++;
+		fals = 0;
 	}
-	if(argc > 4 && ft_strcmp(argv[1],"here_doc") == 0)
+	fd = count(argv);
+	if(argc > 4 )
 	{
-		
+		open_file(argv[1]);
 		while(t < i)
 		{
 			condetion(t,argv,fd,envp);
@@ -167,6 +189,7 @@ int main(int argc, char *argv[], char **envp)
 		}
 		free(fd);
 	}
-	
+	if(fals == 0)
+		unlink(argv[1]);
 	return (0);
 }
