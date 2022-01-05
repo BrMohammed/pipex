@@ -15,4 +15,4 @@ int open_file(char *argv)
     dup2(input,0);
     close(input);
     return(input);
-}
+} 
