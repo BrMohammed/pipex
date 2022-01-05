@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/05 01:34:04 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/05 01:58:22 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int **count(char **argv)
 
 	t = 0;
 	while (argv[i] != NULL)
-		i = i  + 1;
+		i++;
 	
 	if (fals == 0)
 		i -= 4;
@@ -97,7 +97,10 @@ void condetion(int t,char **argv,int **fd,char **envp)
 
 	path = NULL;
 	id = fork();
-	c = ft_split(argv[t + 2],' ');
+	if(fals == 0)
+		c = ft_split(argv[t + 3],' ');
+	else
+		c = ft_split(argv[t + 2],' ');
 	path_finder(&path,c,envp);
 	if(id == 0)
 	{
@@ -171,7 +174,6 @@ int main(int argc, char *argv[], char **envp)
 	if(ft_strcmp(argv[1],"here_doc") == 0)
 	{
 		heredoc(argv[2]);
-		t++;
 		fals = 0;
 	}
 	fd = count(argv);
