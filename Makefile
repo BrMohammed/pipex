@@ -29,6 +29,7 @@ re : fclean all
 #  github bigin
 # ./pipex infile "cat" "awk NR==1" "wc -c" outfile
 # ./pipex pipex.c "sleep 10" "ls" da
+# ./pipex pipex.c "sleep 2" "cat" "ls" "jfjfjf" da
 
 ADD = git add .
 

@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/06 01:38:57 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/06 02:04:33 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ void condetion(int t,char **argv,int **fd,char **envp)
 	path_finder(&path,c,envp);
 	if(id == 0)
 	{
-		printf("[son] pid %d from [parent] pid %d\n",getpid(),getppid());
-		printf("[f} t id=0 :: %d\n" , t);
 		if(t < i - 1)
 		{
 			close(fd[t][0]);
@@ -193,9 +191,7 @@ int main(int argc, char *argv[], char **envp)
 		int y = i;
 		while(t < i)
 		{
-			printf("[son] pid %d from [parent] pid %d\n",getpid(),getppid());
 			condetion(t,argv,fd,envp);
-			printf("[f} t %d\n" , t);
 			close(fd[t][1]);
 			dup2(fd[t][0],0);
 			close(fd[t][0]);
@@ -204,13 +200,13 @@ int main(int argc, char *argv[], char **envp)
 		}
 		while(x < y)
 		{
-			printf("[son] pid %d from [parent] pid %d\n",getpid(),getppid());
-			printf("[f} x %d\n" , x);
 			wait(NULL);
 			x++;
 		}
 		free(fd);
 	}
+	else
+		perror("few args");
 	if(fals == 0)
 		unlink(argv[1]);
 	return (0);
