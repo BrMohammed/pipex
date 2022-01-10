@@ -33,8 +33,8 @@ void	path_finder(char **path,char **c,char **envp)
 	i = 0;
 	while(paths02[i])
 		i++;
-	paths03 = (char **)malloc(sizeof(char *) * (i));
-	paths03[i - 1] = NULL;
+	paths03 = (char **)malloc(sizeof(char *) * (i + 1));
+	paths03[i] = NULL;
 	i = 0;
 	while (paths02[i])
 	{
