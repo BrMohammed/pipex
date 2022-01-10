@@ -94,7 +94,9 @@ void condetion(int t,char **argv,int **fd,char **envp)
 	int id;
 	char *path;
 	char **c;
+	int v ;
 
+	v = -1;
 	path = NULL;
 	id = fork();
 	if(fals == 0)
@@ -110,7 +112,7 @@ void condetion(int t,char **argv,int **fd,char **envp)
 			dup2(fd[t][1],1);
 			close(fd[t][1]);
 			if (execve(path,&c[0],envp) == -1)
-				perror("Could not execve");
+				perror(c[0]);
 		}
 		if(t == i - 1)
 		{
@@ -118,8 +120,19 @@ void condetion(int t,char **argv,int **fd,char **envp)
 				creat_fille(argv[i + 3]);
 			else
 				creat_fille(argv[i + 2]);
-			if (execve(path,&c[0],envp) == -1)
-				perror("Could not execve");
+			
+			if(execve(path,&c[0],envp) == -1)
+			{
+				perror(c[0]);
+				while (t > 1 && v == -1)
+				{
+					t--;
+					c = ft_split(argv[t + 2],' ');
+					path = NULL;
+					path_finder(&path,c,envp);
+					v = execve(path,&c[0],envp);
+				}
+			}
 		}
 	}
 	free(c);
