@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/31 19:33:28 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/01/31 20:01:39 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,45 @@ void	condetion(char **argv, int **fd, char **envp)
 	1 strout write
 */
 
+void	error(char **argv)
+{
+	if (open_file(argv[1]) == -1)
+	{
+		perror(argv[1]);
+		if (g_fals == 0)
+			creat_fille(argv[g_i + 3]);
+		else
+			creat_fille(argv[g_i + 2]);
+		exit(0);
+	}
+}
+
+void	exicution(char **argv, int **fd, char **envp)
+{
+	int	x;
+	int	y;
+
+	x = g_t;
+	y = g_i;
+	while (g_t < g_i)
+	{
+		condetion(argv, fd, envp);
+		close(fd[g_t][1]);
+		dup2(fd[g_t][0], 0);
+		close(fd[g_t][0]);
+		g_t++;
+	}
+	while (x < y)
+	{
+		wait(NULL);
+		x++;
+	}
+	free(fd);
+}
+
 int	main(int argc, char *argv[], char **envp)
 {
 	int	**fd;
-	int	x;
-	int	y;
 
 	g_fals = 1;
 	g_t = 0;
@@ -96,31 +130,8 @@ int	main(int argc, char *argv[], char **envp)
 	fd = count(argv, &g_i, g_fals);
 	if (argc > 4)
 	{
-		if (open_file(argv[1]) == -1)
-		{
-			perror(argv[1]);
-			if (g_fals == 0)
-				creat_fille(argv[g_i + 3]);
-			else
-				creat_fille(argv[g_i + 2]);
-			exit(0);
-		}
-		x = g_t;
-		y = g_i;
-		while (g_t < g_i)
-		{
-			condetion(argv, fd, envp);
-			close(fd[g_t][1]);
-			dup2(fd[g_t][0], 0);
-			close(fd[g_t][0]);
-			g_t++;
-		}
-		while (x < y)
-		{
-			wait(NULL);
-			x++;
-		}
-		free(fd);
+		error(argv);
+		exicution(argv, fd, envp);
 	}
 	else
 		perror("few args");
