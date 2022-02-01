@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/31 20:01:39 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:44:16 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,18 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 	}
 }
 
-void	condetion(char **argv, int **fd, char **envp)
+void	condetion(char ***c, char **argv, int **fd, char **envp)
 {
 	int		id;
 	char	*path;
-	char	**c;
 
 	path = NULL;
 	id = fork();
 	if (g_fals == 0)
-		c = ft_split(argv[g_t + 3], ' ');
+		*c = ft_split(argv[g_t + 3], ' ');
 	else
-		c = ft_split(argv[g_t + 2], ' ');
-	path_finder(&path, c, envp);
+		*c = ft_split(argv[g_t + 2], ' ');
+	path_finder(&path, *c, envp);
 	if (id == 0)
 	{
 		if (g_t < g_i - 1)
@@ -62,12 +61,14 @@ void	condetion(char **argv, int **fd, char **envp)
 			close(fd[g_t][0]);
 			dup2(fd[g_t][1], 1);
 			close(fd[g_t][1]);
-			if (execve(path, &c[0], envp) == -1)
-				perror(c[0]);
+			if (execve(path, c[0], envp) == -1)
+				perror(*c[0]);
 		}
-		continue_of_condetion(c, argv, path, envp);
+		continue_of_condetion(*c, argv, path, envp);
+		close(fd[g_t][1]);
+		dup2(fd[g_t][0], 0);
+		close(fd[g_t][0]);
 	}
-	free(c);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -95,17 +96,16 @@ void	error(char **argv)
 
 void	exicution(char **argv, int **fd, char **envp)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	**c;
 
 	x = g_t;
 	y = g_i;
 	while (g_t < g_i)
 	{
-		condetion(argv, fd, envp);
-		close(fd[g_t][1]);
-		dup2(fd[g_t][0], 0);
-		close(fd[g_t][0]);
+		condetion(&c, argv, fd, envp);
+		free(c);
 		g_t++;
 	}
 	while (x < y)
