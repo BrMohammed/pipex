@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:34:30 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/31 19:34:34 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:18:46 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	heredoc(char *argv)
 	{
 		inputs = ft_strjoin(inputs, r);
 		write(1, "heredoc> ", 9);
-		error = read(0, r, 50);
+		error = read(0, r, 10240);
 		r[error] = '\0';
 	}
 	error = 0;
