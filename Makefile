@@ -1,4 +1,5 @@
 NAME = pipex
+NAME2 = pipex_bonus
 
 CC = gcc
 
@@ -6,24 +7,30 @@ CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c  here_doc.c
 
-AR = ar -rc
-
 RM = rm -f
 
-objets = $(FILES:.c=.o)
 
-$(NAME):$(objets)
-	$(CC) $(CFLAGS)  -o $(NAME) $(FILES) -g
+$(NAME):
+	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
+
+$(NAME2):
+	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES)
+
 
 all:$(NAME)
 
 clean :
-	@$(RM) $(objets)
-
-fclean : clean
 	@$(RM) $(NAME)
 
-re : fclean all
+bonus : $(NAME2)
+
+clean_bonus :
+	@$(RM) $(NAME2)
+
+fclean : clean
+	@$(RM) $(NAME) $(NAME2)
+
+re : fclean all bonus
 
 
 #  github bigin
