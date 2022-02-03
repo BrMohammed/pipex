@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/03 20:12:37 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:03:49 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,20 @@ int	main(int argc, char *argv[], char **envp)
 
 	g_fals = 1;
 	g_t = 0;
+	if (ft_strcmp(argv[1], "here_doc") == 0)
+	{
+		heredoc(argv[2]);
+		g_fals = 0;
+	}
 	fd = count(argv, &g_i, g_fals);
-	if (argc == 5)
+	if (argc > 4)
 	{
 		error(argv);
 		exicution(argv, fd, envp);
 	}
-	else if (argc < 5)
-		perror("few args");
 	else
-		perror("to many args");
+		perror("few args");
+	if (g_fals == 0)
+		unlink(argv[1]);
 	return (0);
 }

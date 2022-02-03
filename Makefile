@@ -5,7 +5,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c  here_doc.c
+FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+
+FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c  here_doc.c
 
 RM = rm -f
 
@@ -14,7 +16,7 @@ $(NAME):
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
 $(NAME2):
-	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES)
+	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
 
 
 all:$(NAME)
