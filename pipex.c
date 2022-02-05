@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/03 20:12:37 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:44:27 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 {
 	int		id;
 	char	*path;
-
+	int t = 0;
+	int v = 0;
 	path = NULL;
 	id = fork();
 	if (g_fals == 0)
@@ -58,17 +59,44 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	{
 		if (g_t < g_i - 1)
 		{
-			close(fd[g_t][0]);
+			while(fd[v])
+			{
+				while(fd[v][t])
+				{
+					if(g_t != v || t != 1)
+					{
+						close(fd[v][t]);
+					}
+					t++;
+				}
+				v++;
+			}
+			//close(fd[0][0]);
+			//close(fd[1][0]);
+			//close(fd[1][1]);
 			dup2(fd[g_t][1], 1);
-			close(fd[g_t][1]);
 			if (execve(path, c[0], envp) == -1)
 				perror(*c[0]);
+			exit(0);	
 		}
 		continue_of_condetion(*c, argv, path, envp);
-		close(fd[g_t][1]);
-		dup2(fd[g_t][0], 0);
-		close(fd[g_t][0]);
+	}	
+	while(fd[v])
+	{
+		while(fd[v][t])
+		{
+			if(g_t != v || t != 0)
+			{
+				close(fd[v][t]);
+			}
+				t++;
+		}
+			v++;
 	}
+		// close(fd[0][1]);
+		// close(fd[1][0]);
+		// close(fd[1][1]);
+		dup2(fd[0][0], 0);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -108,11 +136,25 @@ void	exicution(char **argv, int **fd, char **envp)
 		free(c);
 		g_t++;
 	}
+	// close(fd[0][1]);
+	// close(fd[0][0]);
+	int t = 0;
+	int v = 0;
+	while(fd[v])
+			{
+				while(fd[v][t])
+				{
+						close(fd[v][t]);
+					t++;
+				}
+				v++;
+			}
 	while (x < y)
 	{
 		wait(NULL);
 		x++;
 	}
+	
 	free(fd);
 }
 

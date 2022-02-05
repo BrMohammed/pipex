@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Thu Feb  3 20:31:07 2022
+# Make data base, printed on Sat Feb  5 17:53:24 2022
 
 # Variables
 
@@ -24,7 +24,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/brmohamm/Desktop/pipex_B_conf
+CURDIR := /Users/brmohamm/Desktop/pipex_fin_with_bonus
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 12)
@@ -42,11 +42,11 @@ ADD = git add .
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-d58681d0-aa90-4f95-9d18-645ac1774188.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-3cf97dde-f5e2-4f38-b15c-a383b5c397e4.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.r0OgHLktXe/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.ZbN6yvd6mt/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # makefile (from `Makefile', line 50)
@@ -64,13 +64,13 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 45)
 read := @echo "Add Commit Plz !!" && read -p "-> " enter && git commit -m $${enter}
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.p3MzgN9JpY/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.9VKODMkOOx/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/brmohamm/Desktop/pipex_B_conf
+PWD = /Users/brmohamm/Desktop/pipex_fin_with_bonus
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -132,15 +132,13 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000002a.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.1488
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x102D:0x0:0x0
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -151,8 +149,6 @@ PAGER = less
 LC_ALL = C
 # makefile (from `Makefile', line 2)
 NAME2 = pipex_bonus
-# environment
-SECURITYSESSIONID = 192cf
 # automatic
 ^F = $(notdir $^)
 # default
@@ -164,11 +160,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 74450
+VSCODE_PID = 67724
 # makefile (from `Makefile', line 8)
 FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=1/106=1%
+# Load=76/1024=7%, Rehash=0, Collisions=1/110=1%
 
 # Pattern-specific Variable Values
 
@@ -176,9 +172,9 @@ FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fi
 
 # Directories
 
-# . (device 16777227, inode 1477685): 19 files, no impossibilities.
+# . (device 16777228, inode 1541473): 16 files, no impossibilities.
 
-# 19 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -191,9 +187,9 @@ all: pipex
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 # Not a target:
 .SUFFIXES:
@@ -215,7 +211,7 @@ push:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-03 19:58:41
+#  Last modified 2022-02-05 17:52:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -271,15 +267,34 @@ pipex_bonus:
 
 pipex:
 #  Implicit rule search has not been done.
-#  Last modified 2022-02-03 20:15:52
+#  Implicit/static pattern stem: `'
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := pipex
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  commands to execute (from `Makefile', line 16):
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 	
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/31=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/32=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -291,6 +306,6 @@ pipex:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Feb  3 20:31:07 2022
+# Finished Make data base on Sat Feb  5 17:53:24 2022
 
  

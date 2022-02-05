@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/brmohamm/Desktop/pipex_B_conf'
+make: Entering directory `/Users/brmohamm/Desktop/pipex_fin_with_bonus'
 gcc -Wall -Wextra -Werror  -o pipex ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
-make: Leaving directory `/Users/brmohamm/Desktop/pipex_B_conf'
+make: Leaving directory `/Users/brmohamm/Desktop/pipex_fin_with_bonus'
  
