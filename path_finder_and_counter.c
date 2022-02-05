@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/31 19:11:18 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:51:18 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,20 @@ int	**count(char **argv, int *i, int fals)
 		t++;
 	}
 	return (fd);
+}
+
+void	close_childe(int g_t, int **fd,int index)
+{
+	int t = 0;
+	int v = 0;
+	while (fd[v])
+	{
+		while (fd[v][t])
+		{
+			if (g_t != v || t != index)
+				close(fd[v][t]);
+			t++;
+		}
+		v++;
+	}
 }
