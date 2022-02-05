@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/05 20:02:25 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/05 20:54:49 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 {
 	int		id;
 	char	*path;
+
 	path = NULL;
 	id = fork();
 	if (g_fals == 0)
@@ -57,15 +58,15 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	{
 		if (g_t < g_i - 1)
 		{
-			close_childe(g_t, fd,1);
+			close_childe(g_t, fd, 1);
 			dup2(fd[g_t][1], 1);
 			if (execve(path, c[0], envp) == -1)
 				perror(*c[0]);
-			exit(0);	
+			exit(0);
 		}
 		continue_of_condetion(*c, argv, path, envp);
 	}	
-	close_childe(g_t, fd,0);
+	close_childe(g_t, fd, 0);
 	dup2(fd[0][0], 0);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
@@ -88,7 +89,6 @@ void	error(char **argv)
 			creat_fille(argv[g_i + 3]);
 		else
 			creat_fille(argv[g_i + 2]);
-		exit(0);
 	}
 }
 
@@ -110,22 +110,12 @@ void	exicution(char **argv, int **fd, char **envp)
 		free(c);
 		g_t++;
 	}
-	
-	while(fd[v])
-	{
-		while(fd[v][t])
-		{
-			close(fd[v][t]);
-			t++;
-		}
-		v++;
-	}
+	close_childe(g_t, fd, t + 1);
 	while (x < y)
 	{
 		wait(NULL);
 		x++;
 	}
-	
 	free(fd);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/02 16:03:49 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/05 20:56:37 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,16 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	{
 		if (g_t < g_i - 1)
 		{
-			close(fd[g_t][0]);
+			close_childe(g_t, fd, 1);
 			dup2(fd[g_t][1], 1);
-			close(fd[g_t][1]);
 			if (execve(path, c[0], envp) == -1)
 				perror(*c[0]);
+			exit(0);
 		}
 		continue_of_condetion(*c, argv, path, envp);
-		close(fd[g_t][1]);
-		dup2(fd[g_t][0], 0);
-		close(fd[g_t][0]);
-	}
+	}	
+	close_childe(g_t, fd, 0);
+	dup2(fd[0][0], 0);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -90,7 +89,6 @@ void	error(char **argv)
 			creat_fille(argv[g_i + 3]);
 		else
 			creat_fille(argv[g_i + 2]);
-		exit(0);
 	}
 }
 
@@ -99,7 +97,11 @@ void	exicution(char **argv, int **fd, char **envp)
 	int		x;
 	int		y;
 	char	**c;
+	int		t;
+	int		v;
 
+	t = 0;
+	v = 0;
 	x = g_t;
 	y = g_i;
 	while (g_t < g_i)
@@ -108,6 +110,7 @@ void	exicution(char **argv, int **fd, char **envp)
 		free(c);
 		g_t++;
 	}
+	close_childe(g_t, fd, t + 1);
 	while (x < y)
 	{
 		wait(NULL);
