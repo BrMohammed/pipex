@@ -12,10 +12,10 @@ FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c
 RM = rm -f
 
 
-$(NAME):
+$(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
-$(NAME2):
+$(NAME2):  $(FILES2)
 	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
 
 
