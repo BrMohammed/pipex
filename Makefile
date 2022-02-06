@@ -1,4 +1,5 @@
 NAME = pipex
+NAME2 = pipex_2
 
 CC = gcc
 
@@ -15,7 +16,7 @@ $(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
 $(NAME2):  $(FILES2)
-	$(CC) $(CFLAGS)  -o $(NAME) $(FILES2)
+	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
 
 
 all:$(NAME)
@@ -24,6 +25,7 @@ clean :
 	@$(RM) $(NAME)
 
 bonus : $(NAME2)
+	
 
 clean_bonus :
 	@$(RM) $(NAME2)

@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 20:46:18 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:57:11 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 			paths03[i] = ft_strjoin(paths02[i], "/");
 			i++;
 		}
+		free(paths02);
 	}
 	else
 		paths03 = NULL;
@@ -72,10 +73,9 @@ void	path_finder(char **path, char **c, char **envp)
 				free(*path);
 			i++;
 		}
+		free(paths03);
 	}
 	link_ready(if_access, path, c);
-	free(paths02);
-	free(paths03);
 }
 
 void	close_childe(int g_t, int **fd, int index)

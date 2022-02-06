@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 18:53:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:07:31 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	main(int argc, char *argv[], char **envp)
 		fd = count(argv, &g_i, g_fals);
 		open_file(argv);
 		exicution(argv, fd, envp);
+		while(1);
 	}
 	else
 		perror("few args");

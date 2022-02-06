@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 21:22:30 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:55:04 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	close_childe(g_t, fd, 0);
 	dup2(fd[g_t][0], 0);
 	close(fd[g_t][0]);
+	free(path);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -87,8 +88,8 @@ void	exicution(char **argv, int **fd, char **envp)
 		condetion(&c, argv, fd, envp);
 		close(fd[g_t][0]);
 		close(fd[g_t][1]);
-		free(c);
 		g_t++;
+		free(c);
 	}
 	while (x < y)
 	{
@@ -101,7 +102,7 @@ void	exicution(char **argv, int **fd, char **envp)
 int	main(int argc, char *argv[], char **envp)
 {
 	int	**fd;
-
+	
 	g_fals = 1;
 	g_t = 0;
 	if (argc == 5)
@@ -109,6 +110,7 @@ int	main(int argc, char *argv[], char **envp)
 		fd = count(argv, &g_i, g_fals);
 		open_file(argv);
 		exicution(argv, fd, envp);
+		while(1);
 	}
 	else if (argc < 5)
 		perror("few args");

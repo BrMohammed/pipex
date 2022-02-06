@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sun Feb  6 21:23:31 2022
+# Make data base, printed on Sun Feb  6 23:09:23 2022
 
 # Variables
 
@@ -27,33 +28,33 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/brmohamm/Desktop/pipex_fin_with_bonus
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 11)
+# makefile (from `Makefile', line 12)
 RM = rm -f
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 5)
+# makefile (from `Makefile', line 6)
 CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from `Makefile', line 42)
+# makefile (from `Makefile', line 44)
 ADD = git add .
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-e5e39720-dbc0-42ef-b9e5-86607b2d06f8.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-e9b483f2-b459-4e08-882b-543d1d71726c.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.7OCDYIWwT6/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.PO61ONT4Pl/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-# makefile (from `Makefile', line 49)
+# makefile (from `Makefile', line 51)
 commit = git log --graph --oneline --decorate HEAD^..HEAD
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# makefile (from `Makefile', line 9)
+# makefile (from `Makefile', line 10)
 FILES2 = ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c  here_doc.c count.c
 # environment
 VSCODE_LOG_STACK = false
@@ -61,10 +62,10 @@ VSCODE_LOG_STACK = false
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 44)
+# makefile (from `Makefile', line 46)
 read := @echo "Add Commit Plz !!" && read -p "-> " enter && git commit -m $${enter}
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SlwnFwGRKO/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Ohc8p3HUWF/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -99,9 +100,9 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 47)
+# makefile (from `Makefile', line 49)
 PU = git push origin master
-# makefile (from `Makefile', line 3)
+# makefile (from `Makefile', line 4)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -132,15 +133,13 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000001f.Electron
+XPC_SERVICE_NAME = com.microsoft.VSCode.1156
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x102D:0x0:0x0
-# environment
-COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -149,8 +148,8 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 1883e
+# makefile (from `Makefile', line 2)
+NAME2 = pipex_2
 # automatic
 ^F = $(notdir $^)
 # default
@@ -162,11 +161,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 83005
-# makefile (from `Makefile', line 7)
+VSCODE_PID = 1164
+# makefile (from `Makefile', line 8)
 FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=1/106=1%
+# Load=76/1024=7%, Rehash=0, Collisions=1/106=1%
 
 # Pattern-specific Variable Values
 
@@ -174,15 +173,28 @@ FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fi
 
 # Directories
 
-# . (device 16777227, inode 1541473): 21 files, no impossibilities.
+# . (device 16777227, inode 1541473): 19 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
+
+# Not a target:
+here_doc.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ 
+pipex_bonus.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 ft_strcmp.c:
@@ -221,17 +233,25 @@ push:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 52):
+#  commands to execute (from `Makefile', line 54):
 	@$(commit)
 	@$(ADD)
 	$(read)
 	$(PU)
 	
 
+pipex_2: ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c here_doc.c count.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 19):
+	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
+	
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 21:16:39
+#  Last modified 2022-02-06 23:08:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -240,7 +260,7 @@ Makefile:
 # Not a target:
 pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 21:22:30
+#  Last modified 2022-02-06 22:55:04
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -249,7 +269,7 @@ pipex.c:
 # Not a target:
 path_finder.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 20:46:18
+#  Last modified 2022-02-06 22:57:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -259,27 +279,29 @@ clean_bonus:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 29):
+#  commands to execute (from `Makefile', line 31):
 	@$(RM) $(NAME2)
 	
 
-bonus:
+bonus: pipex_2
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  commands to execute (from `Makefile', line 28):
+	
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 32):
+#  commands to execute (from `Makefile', line 34):
 	@$(RM) $(NAME) $(NAME2)
 	
 
 # Not a target:
 ft_strjoin.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-05 17:52:33
+#  Last modified 2022-02-06 22:58:15
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -320,7 +342,6 @@ count.c:
 
 re: fclean all
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -328,23 +349,23 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 24):
+#  commands to execute (from `Makefile', line 25):
 	@$(RM) $(NAME)
 	
 
 pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-02-06 21:22:33
+#  Last modified 2022-02-06 23:08:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 15):
+#  commands to execute (from `Makefile', line 16):
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 	
 
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=0/44=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/57=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -356,6 +377,6 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Feb  6 21:23:31 2022
+# Finished Make data base on Sun Feb  6 23:09:23 2022
 
  
