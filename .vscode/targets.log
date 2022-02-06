@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Sun Feb  6 17:03:58 2022
+# Make data base, printed on Sun Feb  6 20:34:03 2022
 
 # Variables
 
@@ -42,11 +42,11 @@ ADD = git add .
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-fc525bdf-ad40-4bbd-8261-eb314a937f68.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-22f6beb4-bfba-4738-affd-1af41e7a47d8.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.FWqkoQUHLf/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.7OCDYIWwT6/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # makefile (from `Makefile', line 50)
@@ -54,7 +54,7 @@ commit = git log --graph --oneline --decorate HEAD^..HEAD
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 10)
-FILES2 = ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c  here_doc.c
+FILES2 = ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c  here_doc.c .count.c
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -64,7 +64,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 45)
 read := @echo "Add Commit Plz !!" && read -p "-> " enter && git commit -m $${enter}
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.NB9BHbSU21/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.SlwnFwGRKO/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -132,7 +132,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000017.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000001f.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -152,7 +152,7 @@ LC_ALL = C
 # makefile (from `Makefile', line 2)
 NAME2 = pipex_bonus
 # environment
-SECURITYSESSIONID = 187d2
+SECURITYSESSIONID = 1883e
 # automatic
 ^F = $(notdir $^)
 # default
@@ -164,9 +164,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 45409
+VSCODE_PID = 83005
 # makefile (from `Makefile', line 8)
-FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # variable set hash-table stats:
 # Load=78/1024=8%, Rehash=0, Collisions=1/114=1%
 
@@ -185,6 +185,12 @@ FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fi
 # No implicit rules.
 
 # Files
+
+# Not a target:
+.count.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 here_doc.c:
@@ -219,16 +225,7 @@ all: pipex
 # Not a target:
 ft_strnstr.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-05 17:52:33
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-path_finder_and_counter.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-02-06 16:06:27
+#  Last modified 2022-02-06 18:04:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -254,7 +251,7 @@ push:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 14:41:14
+#  Last modified 2022-02-06 20:33:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -263,7 +260,16 @@ Makefile:
 # Not a target:
 pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 16:06:40
+#  Last modified 2022-02-06 18:53:13
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+path_finder.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-06 20:34:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -316,11 +322,20 @@ ft_split.c:
 
 # Not a target:
 files.c:
+ 
 #  Implicit rule search has been done.
-#  Last modified 2022-02-06 15:51:55
+#  Last modified 2022-02-06 18:47:25
 #  File has been updated.
 #  Successfully updated.
- 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+count.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-06 20:33:24
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -337,7 +352,7 @@ clean:
 	@$(RM) $(NAME)
 	
 
-pipex_bonus: ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c here_doc.c
+pipex_bonus: ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c here_doc.c .count.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -345,10 +360,10 @@ pipex_bonus: ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcm
 	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
 	
 
-pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `'
-#  Last modified 2022-02-06 15:57:42
+#  Last modified 2022-02-06 20:23:37
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -358,15 +373,15 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 # automatic
 # * := 
 # automatic
-# + := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+# + := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # automatic
 # | := 
 # automatic
 # < := ft_strjoin.c
 # automatic
-# ^ := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+# ^ := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # automatic
-# ? := pipex.c path_finder_and_counter.c
+# ? := path_finder.c count.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  commands to execute (from `Makefile', line 16):
@@ -374,7 +389,7 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 	
 
 # files hash-table stats:
-# Load=21/1024=2%, Rehash=0, Collisions=0/55=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/59=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -386,6 +401,6 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Feb  6 17:03:58 2022
+# Finished Make data base on Sun Feb  6 20:34:03 2022
 
  

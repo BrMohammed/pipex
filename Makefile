@@ -5,9 +5,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c
+FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 
-FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder_and_counter.c  here_doc.c
+FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c  here_doc.c .count.c
 
 RM = rm -f
 
