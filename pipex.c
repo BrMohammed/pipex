@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 18:53:13 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 21:22:30 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 		creat_fille(argv[g_i + 2]);
 		if (execve(path, &c[0], envp) == -1)
 		{
-			perror(c[0]);
+			perror(argv[g_i + 2]);
 			exit(127);
 		}
 		exit(2);
@@ -50,7 +50,10 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 			dup2(fd[g_t][1], 1);
 			close(fd[g_t][1]);
 			if (execve(path, c[0], envp) == -1)
-				perror(*c[0]);
+			{
+				perror(argv[g_t + 2]);
+			}
+				
 		}
 		continue_of_condetion(*c, argv, path, envp);
 	}	

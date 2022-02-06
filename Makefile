@@ -1,5 +1,4 @@
 NAME = pipex
-NAME2 = pipex_bonus
 
 CC = gcc
 
@@ -7,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 
-FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c  here_doc.c .count.c
+FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c  here_doc.c count.c
 
 RM = rm -f
 
@@ -16,7 +15,7 @@ $(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
 $(NAME2):  $(FILES2)
-	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
+	$(CC) $(CFLAGS)  -o $(NAME) $(FILES2)
 
 
 all:$(NAME)
