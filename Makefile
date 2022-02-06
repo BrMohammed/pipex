@@ -32,7 +32,7 @@ clean_bonus :
 fclean : clean
 	@$(RM) $(NAME) $(NAME2)
 
-re : fclean all bonus
+re : fclean all
 
 
 #  github bigin

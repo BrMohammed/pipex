@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/05 20:56:37 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 17:58:49 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,9 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 		if (execve(path, &c[0], envp) == -1)
 		{
 			perror(c[0]);
-			while (g_t > 1 && v == -1)
-			{
-				g_t--;
-				c = ft_split(argv[g_t + 2], ' ');
-				path = NULL;
-				path_finder(&path, c, envp);
-				v = execve(path, &c[0], envp);
-			}
+			exit(127);
 		}
+			
 	}
 }
 
@@ -60,6 +54,7 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 		{
 			close_childe(g_t, fd, 1);
 			dup2(fd[g_t][1], 1);
+			close(fd[g_t][1]);
 			if (execve(path, c[0], envp) == -1)
 				perror(*c[0]);
 			exit(0);
@@ -67,7 +62,8 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 		continue_of_condetion(*c, argv, path, envp);
 	}	
 	close_childe(g_t, fd, 0);
-	dup2(fd[0][0], 0);
+	dup2(fd[g_t][0], 0);
+	close(fd[g_t][0]);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -79,7 +75,7 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	0 strin read
 	1 strout write
 */
-
+/*
 void	error(char **argv)
 {
 	if (open_file(argv[1]) == -1)
@@ -91,7 +87,7 @@ void	error(char **argv)
 			creat_fille(argv[g_i + 2]);
 	}
 }
-
+*/
 void	exicution(char **argv, int **fd, char **envp)
 {
 	int		x;
@@ -107,10 +103,11 @@ void	exicution(char **argv, int **fd, char **envp)
 	while (g_t < g_i)
 	{
 		condetion(&c, argv, fd, envp);
+		close(fd[g_t][0]);
+		close(fd[g_t][1]);
 		free(c);
 		g_t++;
 	}
-	close_childe(g_t, fd, t + 1);
 	while (x < y)
 	{
 		wait(NULL);
@@ -130,10 +127,10 @@ int	main(int argc, char *argv[], char **envp)
 		heredoc(argv[2]);
 		g_fals = 0;
 	}
-	fd = count(argv, &g_i, g_fals);
 	if (argc > 4)
 	{
-		error(argv);
+		fd = count(argv, &g_i, g_fals);
+		open_file(argv[1]);
 		exicution(argv, fd, envp);
 	}
 	else

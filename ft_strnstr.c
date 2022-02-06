@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:19:35 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/01/31 17:19:36 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 18:04:59 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ char	*ft_strnstr(const char *str, const char *find, size_t slen)
 		n = 0;
 		k++;
 	}
-	return (0);
+	return (NULL);
 }

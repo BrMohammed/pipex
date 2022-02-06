@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/05 20:55:55 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 18:08:50 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 		*path = ft_strnstr(envp[i], "PATH=", 5);
 		i++;
 	}
-	paths02 = ft_split(*path, ':');
+	if(*path != NULL)
+	{
+			paths02 = ft_split(*path, ':');
 	i = 0;
 	while (paths02[i])
 		i++;
@@ -35,6 +37,10 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 		paths03[i] = ft_strjoin(paths02[i], "/");
 		i++;
 	}
+	}
+	else 
+		paths03 = NULL;
+
 	return (paths03);
 }
 
@@ -49,7 +55,9 @@ void	path_finder(char **path, char **c, char **envp)
 	paths02 = NULL;
 	paths03 = path_finder_half(path, paths02, envp);
 	i = 0;
-	while (paths03[i] && if_access == -1)
+	if(paths03 != NULL)
+	{
+		while (paths03[i] && if_access == -1)
 	{
 		*path = ft_strjoin(paths03[i], c[0]);
 		if_access = access(*path, F_OK);
@@ -57,6 +65,8 @@ void	path_finder(char **path, char **c, char **envp)
 			free(*path);
 		i++;
 	}
+	}
+	
 	free(paths02);
 	free(paths03);
 }

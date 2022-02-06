@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:19:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/05 20:56:00 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 17:53:08 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 void	creat_fille(char *argv);
-int		open_file(char *argv);
+//void	open_file(int g_fals, int g_i, char **argv);
+void	open_file(char *argv);
 char	*ft_strnstr(const char *str, const char *find, size_t slen);
 int		ft_strcmp( const char *s1, const char *s2);
 void	path_finder(char **path, char **c, char **envp);
 int		**count(char **argv, int *i, int fals);
 void	heredoc(char *argv);
 void	close_childe(int g_t, int **fd, int index);
+
 
 #endif
