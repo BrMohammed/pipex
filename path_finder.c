@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 20:35:06 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:46:18 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 		paths03 = NULL;
 	return (paths03);
 }
-void link_ready()
+
+void	link_ready(int if_access, char **path, char **c)
 {
 	if (if_access == -1)
 	{
@@ -72,7 +73,7 @@ void	path_finder(char **path, char **c, char **envp)
 			i++;
 		}
 	}
-	link_ready();
+	link_ready(if_access, path, c);
 	free(paths02);
 	free(paths03);
 }
