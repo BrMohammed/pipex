@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 17:58:49 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 18:53:07 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 			perror(c[0]);
 			exit(127);
 		}
-			
+		exit(2);
 	}
 }
 
@@ -57,7 +57,6 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 			close(fd[g_t][1]);
 			if (execve(path, c[0], envp) == -1)
 				perror(*c[0]);
-			exit(0);
 		}
 		continue_of_condetion(*c, argv, path, envp);
 	}	
@@ -67,27 +66,13 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
-
-/*./pipex file1 cmd1 cmd2 file2*/
 /*
 	fd[0]read;
 	fd[1]write;
 	0 strin read
 	1 strout write
 */
-/*
-void	error(char **argv)
-{
-	if (open_file(argv[1]) == -1)
-	{
-		perror(argv[1]);
-		if (g_fals == 0)
-			creat_fille(argv[g_i + 3]);
-		else
-			creat_fille(argv[g_i + 2]);
-	}
-}
-*/
+
 void	exicution(char **argv, int **fd, char **envp)
 {
 	int		x;
@@ -130,7 +115,7 @@ int	main(int argc, char *argv[], char **envp)
 	if (argc > 4)
 	{
 		fd = count(argv, &g_i, g_fals);
-		open_file(argv[1]);
+		open_file(argv);
 		exicution(argv, fd, envp);
 	}
 	else
