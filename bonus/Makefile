@@ -4,18 +4,17 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
+FILES =  ft_strjoin_bonus.c pipex_bonus.c ft_split_bonus.c files_bonus.c ft_strnstr_bonus.c ft_strcmp_bonus.c path_finder_bonus.c  here_doc_bonus.c count_bonus.c
 
 RM = rm -f
 
 
-
 $(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
-	
-all : $(NAME)
 
-clean :
+bonus : $(NAME)
+
+clean_bonus :
 	@$(RM) $(NAME)
 
 fclean : clean
