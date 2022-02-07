@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/07 16:22:07 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:15:50 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 			perror(c[0]);
 			exit(127);
 		}
-		exit(2);
+		
 	}
+	exit(0);
 }
 
 void	condetion(char ***c, char **argv, int **fd, char **envp)
@@ -42,12 +43,12 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 	char	*path;
 
 	path = NULL;
-	id = fork();
 	if (g_fals == 0)
 		*c = ft_split(argv[g_t + 3], ' ');
 	else
 		*c = ft_split(argv[g_t + 2], ' ');
 	path_finder(&path, *c, envp);
+	id = fork();
 	if (id == 0)
 	{
 		if (g_t < g_i - 1)
@@ -59,7 +60,9 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 				perror(*c[0]);
 		}
 		continue_of_condetion(*c, argv, path, envp);
-	}	
+	}
+	if(path != NULL)
+		free(path);
 	close_childe(g_t, fd, 0);
 	dup2(fd[g_t][0], 0);
 	close(fd[g_t][0]);
@@ -88,9 +91,9 @@ void	exicution(char **argv, int **fd, char **envp)
 		condetion(&c, argv, fd, envp);
 		while (c[t])
 			free(c[t++]);
-		free(c);
 		close(fd[g_t][0]);
 		close(fd[g_t][1]);
+		free(c);
 		g_t++;
 	}
 	while (x < y)

@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/07 16:15:39 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 17:53:49 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,27 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 
 void	link_ready(int if_access, char **path, char **c)
 {
+	int i = 0;
+	char *temp;
 	if (if_access == -1)
 	{
-		*path = ft_strjoin(c[0], "");
+		while(c[0][i])
+		i++;
+		temp = malloc(i + 1);
+		temp[i] = '\0';
+		i = 0;
+		while(c[0][i])
+		{
+			temp[i] = c[0][i];
+			i++;
+		}
+		*path = ft_strjoin(temp,"");
 		if_access = access(*path, F_OK);
 		if (if_access == -1)
+		{
 			free(*path);
+			*path = NULL;
+		}
 	}
 }
 
@@ -70,14 +85,17 @@ void	path_finder(char **path, char **c, char **envp)
 			*path = ft_strjoin(paths03[i], c[0]);
 			if_access = access(*path, F_OK);
 			if (if_access == -1)
+			{
 				free(*path);
+				*path = NULL;
+			}
 			i++;
 		}
-		while (paths03[i])
-			free(paths03[i++]);
-		free(paths03);
 	}
-	link_ready(if_access, path, c);
+	link_ready(if_access, path, c);	
+	 while (paths03[i])
+	 		free(paths03[i++]);
+	free(paths03);
 }
 
 void	close_childe(int g_t, int **fd, int index)
