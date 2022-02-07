@@ -1,5 +1,5 @@
 NAME = pipex
-NAME2 = pipex_2
+NAME2 = pipex_02
 
 CC = gcc
 
@@ -11,15 +11,14 @@ FILES2 =  ft_strjoin.c pipex_bonus.c ft_split.c files.c ft_strnstr.c ft_strcmp.c
 
 RM = rm -f
 
+all : $(NAME)
+	@$(RM) $(NAME2)
 
 $(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
 $(NAME2):  $(FILES2)
 	$(CC) $(CFLAGS)  -o $(NAME2) $(FILES2)
-
-
-all:$(NAME)
 
 clean :
 	@$(RM) $(NAME)
