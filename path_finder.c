@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/07 17:53:49 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:44:25 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,23 @@ char	**path_finder_half(char **path, char **paths02, char **envp)
 
 void	link_ready(int if_access, char **path, char **c)
 {
-	int i = 0;
-	char *temp;
+	int		i;
+	char	*temp;
+
+	i = 0;
 	if (if_access == -1)
 	{
-		while(c[0][i])
-		i++;
+		while (c[0][i])
+			i++;
 		temp = malloc(i + 1);
 		temp[i] = '\0';
 		i = 0;
-		while(c[0][i])
+		while (c[0][i])
 		{
 			temp[i] = c[0][i];
 			i++;
 		}
-		*path = ft_strjoin(temp,"");
+		*path = ft_strjoin(temp, "");
 		if_access = access(*path, F_OK);
 		if (if_access == -1)
 		{
@@ -65,6 +67,28 @@ void	link_ready(int if_access, char **path, char **c)
 			*path = NULL;
 		}
 	}
+}
+
+int	midel_of_path(char **paths03, char **path, char *c, int *if_access)
+{
+	int		i;
+
+	i = 0;
+	if (*paths03 != NULL)
+	{
+		while (paths03[i] && *if_access == -1)
+		{
+			*path = ft_strjoin(paths03[i], &c[0]);
+			*if_access = access(*path, F_OK);
+			if (*if_access == -1)
+			{
+				free(*path);
+				*path = NULL;
+			}
+			i++;
+		}
+	}
+	return (i);
 }
 
 void	path_finder(char **path, char **c, char **envp)
@@ -77,24 +101,13 @@ void	path_finder(char **path, char **c, char **envp)
 	if_access = -1;
 	paths02 = NULL;
 	paths03 = path_finder_half(path, paths02, envp);
-	i = 0;
-	if (paths03 != NULL)
+	i = midel_of_path(paths03, path, c[0], &if_access);
+	link_ready(if_access, path, c);
+	while (paths03[i])
 	{
-		while (paths03[i] && if_access == -1)
-		{
-			*path = ft_strjoin(paths03[i], c[0]);
-			if_access = access(*path, F_OK);
-			if (if_access == -1)
-			{
-				free(*path);
-				*path = NULL;
-			}
-			i++;
-		}
+		free(paths03[i]);
+		i++;
 	}
-	link_ready(if_access, path, c);	
-	 while (paths03[i])
-	 		free(paths03[i++]);
 	free(paths03);
 }
 

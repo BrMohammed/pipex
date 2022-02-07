@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/07 19:20:44 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:43:34 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 			perror(c[0]);
 			exit(127);
 		}
-		
 	}
 	exit(0);
 }
@@ -61,11 +60,9 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 		}
 		continue_of_condetion(*c, argv, path, envp);
 	}
-	if(path != NULL)
+	if (path != NULL)
 		free(path);
-	close_childe(g_t, fd, 0);
 	dup2(fd[g_t][0], 0);
-	close(fd[g_t][0]);
 }
 /* $> ./pipex here_doc LIMITER cmd cmd1 file */
 /* cmd << LIMITER | cmd1 >> file */
@@ -101,7 +98,6 @@ void	exicution(char **argv, int **fd, char **envp)
 		wait(NULL);
 		x++;
 	}
-	free(fd);
 }
 
 int	main(int argc, char *argv[], char **envp)
