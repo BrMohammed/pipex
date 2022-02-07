@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:47:53 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 22:57:11 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:15:39 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	path_finder(char **path, char **c, char **envp)
 				free(*path);
 			i++;
 		}
+		while (paths03[i])
+			free(paths03[i++]);
 		free(paths03);
 	}
 	link_ready(if_access, path, c);

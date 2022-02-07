@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 23:07:31 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:22:07 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,18 @@ void	exicution(char **argv, int **fd, char **envp)
 	int		y;
 	char	**c;
 	int		t;
-	int		v;
 
-	t = 0;
-	v = 0;
 	x = g_t;
 	y = g_i;
 	while (g_t < g_i)
 	{
+		t = 0;
 		condetion(&c, argv, fd, envp);
+		while (c[t])
+			free(c[t++]);
+		free(c);
 		close(fd[g_t][0]);
 		close(fd[g_t][1]);
-		free(c);
 		g_t++;
 	}
 	while (x < y)
@@ -117,7 +117,6 @@ int	main(int argc, char *argv[], char **envp)
 		fd = count(argv, &g_i, g_fals);
 		open_file(argv);
 		exicution(argv, fd, envp);
-		while(1);
 	}
 	else
 		perror("few args");

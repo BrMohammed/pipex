@@ -1,5 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/brmohamm/Desktop/pipex_fin_with_bonus'
-make: `pipex' is up to date.
 make: Leaving directory `/Users/brmohamm/Desktop/pipex_fin_with_bonus'
+ 
+make: *** No rule to make target `pipex.c', needed by `pipex'.
  
