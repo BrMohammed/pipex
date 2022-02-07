@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/07 22:43:34 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:48:05 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,6 @@ void	condetion(char ***c, char **argv, int **fd, char **envp)
 		free(path);
 	dup2(fd[g_t][0], 0);
 }
-/* $> ./pipex here_doc LIMITER cmd cmd1 file */
-/* cmd << LIMITER | cmd1 >> file */
-/*
-	fd[0]read;
-	fd[1]write;
-	0 strin read
-	1 strout write
-*/
 
 void	exicution(char **argv, int **fd, char **envp)
 {
