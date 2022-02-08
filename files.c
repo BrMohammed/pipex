@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:19:21 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/06 18:47:25 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/08 02:54:10 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ void	creat_fille(char *argv)
 	}
 }
 
-void	open_file(char **argv)
+void	open_file(char **argv, int *g_bad_file)
 {
 	int	input;
 
 	input = open(argv[1], O_RDONLY);
 	if (input == -1)
 	{
+		*g_bad_file = 1;
 		perror(argv[1]);
-		input = open(argv[0], O_RDONLY);
+		input = open(argv[1], O_RDWR | O_CREAT, 0777);
 		dup2(input, 0);
 		close(input);
 	}

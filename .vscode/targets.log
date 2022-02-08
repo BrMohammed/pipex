@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Feb  7 22:45:54 2022
+# Make data base, printed on Tue Feb  8 02:07:13 2022
 
 # Variables
 
@@ -42,11 +42,11 @@ ADD = git add .
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-c04778bd-ea81-4c6c-9e64-e19a02e7553a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000h5m00041d/T/vscode-ipc-1d65e13a-4aec-4cce-b835-35a465ab33d7.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.uZZfuypwTP/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.k3Hr5Q95RB/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 # makefile (from `Makefile', line 39)
@@ -62,7 +62,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 34)
 read := @echo "Add Commit Plz !!" && read -p "-> " enter && git commit -m $${enter}
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.rVSW1iesFu/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.LxnP986H0x/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -156,7 +156,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 66306
+VSCODE_PID = 95710
 # makefile (from `Makefile', line 7)
 FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # variable set hash-table stats:
@@ -168,9 +168,9 @@ FILES = ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fi
 
 # Directories
 
-# . (device 16777227, inode 1569901): 15 files, no impossibilities.
+# . (device 16777227, inode 1569901): 17 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -234,7 +234,7 @@ Makefile:
 # Not a target:
 pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-07 22:22:53
+#  Last modified 2022-02-08 02:07:02
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -284,7 +284,7 @@ ft_split.c:
 # Not a target:
 files.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-07 20:27:25
+#  Last modified 2022-02-08 02:06:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -315,11 +315,11 @@ clean:
 pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `'
-#  File does not exist.
+#  Last modified 2022-02-08 02:06:16
 #  File has been updated.
 #  Needs to be updated (-q is set).
-# automatic
  
+# automatic
 # @ := pipex
 # automatic
 # % := 
@@ -334,7 +334,7 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 # automatic
 # ^ := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
 # automatic
-# ? := ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_finder.c count.c
+# ? := pipex.c files.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  commands to execute (from `Makefile', line 14):
@@ -354,6 +354,6 @@ pipex: ft_strjoin.c pipex.c ft_split.c files.c ft_strnstr.c ft_strcmp.c path_fin
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Feb  7 22:45:54 2022
+# Finished Make data base on Tue Feb  8 02:07:13 2022
 
  

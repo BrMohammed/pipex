@@ -12,7 +12,7 @@ RM = rm -f
 $(NAME):  $(FILES)
 	$(CC) $(CFLAGS)  -o $(NAME) $(FILES)
 
-bonus : $(NAME)
+all : $(NAME)
 
 clean_bonus :
 	@$(RM) $(NAME)
