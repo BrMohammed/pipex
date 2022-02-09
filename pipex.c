@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/08 02:53:55 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:43:58 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	g_i;
 int	g_fals;
 int	g_t;
-int	g_bad_file;
 
 void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 {
@@ -104,18 +103,15 @@ int	main(int argc, char *argv[], char **envp)
 
 	g_fals = 1;
 	g_t = 0;
-	g_bad_file = 0;
 	if (argc == 5)
 	{
 		fd = count(argv, &g_i, g_fals);
-		open_file(argv, &g_bad_file);
+		open_file(argv, g_i + 2);
 		exicution(argv, fd, envp);
 	}
 	else if (argc < 5)
 		perror("few args");
 	else
 		perror("to many args");
-	if (g_bad_file == 1)
-		unlink(argv[1]);
 	return (0);
 }

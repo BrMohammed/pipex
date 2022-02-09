@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/08 02:54:30 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:41:27 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	g_i;
 int	g_fals;
 int	g_t;
-int	g_bad_file;
 
 void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 {
@@ -99,7 +98,6 @@ int	main(int argc, char *argv[], char **envp)
 
 	g_fals = 1;
 	g_t = 0;
-	g_bad_file = 0;
 	if (ft_strcmp(argv[1], "here_doc") == 0)
 	{
 		heredoc(argv[2]);
@@ -108,14 +106,12 @@ int	main(int argc, char *argv[], char **envp)
 	if (argc > 4)
 	{
 		fd = count(argv, &g_i, g_fals);
-		open_file(argv, &g_bad_file);
+		open_file(argv, g_i + 2);
 		exicution(argv, fd, envp);
 	}
 	else
 		perror("few args");
 	if (g_fals == 0)
-		unlink(argv[1]);
-	if (g_bad_file == 1)
 		unlink(argv[1]);
 	return (0);
 }
