@@ -17,6 +17,9 @@ all : $(NAME)
 clean_bonus :
 	@$(RM) $(NAME)
 
+clean :
+	@$(RM) $(NAME)
+
 fclean : clean
 	@$(RM) $(NAME)
 

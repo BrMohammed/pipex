@@ -6,28 +6,24 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:21:06 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/09 17:41:27 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:48:05 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-int	g_i;
-int	g_fals;
-int	g_t;
-
-void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
+void	continue_of_condetion(char **c, char **argv, char *path, t_data *data)
 {
 	int		v ;
 
 	v = -1;
-	if (g_t == g_i - 1)
+	if (data->t == data->i - 1)
 	{
-		if (g_fals == 0)
-			creat_fille(argv[g_i + 3]);
+		if (data->fals == 0)
+			creat_fille(argv[data->i + 3]);
 		else
-			creat_fille(argv[g_i + 2]);
-		if (execve(path, &c[0], envp) == -1)
+			creat_fille(argv[data->i + 2]);
+		if (execve(path, &c[0], data->env) == -1)
 		{
 			perror(c[0]);
 			exit(127);
@@ -36,54 +32,54 @@ void	continue_of_condetion(char **c, char **argv, char *path, char **envp)
 	exit(0);
 }
 
-void	condetion(char ***c, char **argv, int **fd, char **envp)
+void	condetion(char ***c, char **argv, int **fd, t_data *data)
 {
 	int		id;
 	char	*path;
 
 	path = NULL;
-	if (g_fals == 0)
-		*c = ft_split(argv[g_t + 3], ' ');
+	if (data->fals == 0)
+		*c = ft_split(argv[data->t + 3], ' ');
 	else
-		*c = ft_split(argv[g_t + 2], ' ');
-	path_finder(&path, *c, envp);
+		*c = ft_split(argv[data->t + 2], ' ');
+	path_finder(&path, *c, data->env);
 	id = fork();
 	if (id == 0)
 	{
-		if (g_t < g_i - 1)
+		if (data->t < data->i - 1)
 		{
-			close_childe(g_t, fd, 1);
-			dup2(fd[g_t][1], 1);
-			close(fd[g_t][1]);
-			if (execve(path, c[0], envp) == -1)
+			close_childe(data->t, fd, 1);
+			dup2(fd[data->t][1], 1);
+			close(fd[data->t][1]);
+			if (execve(path, c[0], data->env) == -1)
 				perror(*c[0]);
 		}
-		continue_of_condetion(*c, argv, path, envp);
+		continue_of_condetion(*c, argv, path, data);
 	}
 	if (path != NULL)
 		free(path);
-	dup2(fd[g_t][0], 0);
+	dup2(fd[data->t][0], 0);
 }
 
-void	exicution(char **argv, int **fd, char **envp)
+void	exicution(char **argv, int **fd, t_data *data)
 {
 	int		x;
 	int		y;
 	char	**c;
 	int		t;
 
-	x = g_t;
-	y = g_i;
-	while (g_t < g_i)
+	x = data->t;
+	y = data->i;
+	while (data->t < data->i)
 	{
 		t = 0;
-		condetion(&c, argv, fd, envp);
+		condetion(&c, argv, fd, data);
 		while (c[t])
 			free(c[t++]);
-		close(fd[g_t][0]);
-		close(fd[g_t][1]);
+		close(fd[data->t][0]);
+		close(fd[data->t][1]);
 		free(c);
-		g_t++;
+		data->t++;
 	}
 	while (x < y)
 	{
@@ -94,24 +90,27 @@ void	exicution(char **argv, int **fd, char **envp)
 
 int	main(int argc, char *argv[], char **envp)
 {
-	int	**fd;
+	int		**fd;
+	t_data	data;
 
-	g_fals = 1;
-	g_t = 0;
+	data.fals = 1;
+	data.t = 0;
+	data.i = 0;
+	data.env = envp;
 	if (ft_strcmp(argv[1], "here_doc") == 0)
 	{
 		heredoc(argv[2]);
-		g_fals = 0;
+		data.fals = 0;
 	}
 	if (argc > 4)
 	{
-		fd = count(argv, &g_i, g_fals);
-		open_file(argv, g_i + 2);
-		exicution(argv, fd, envp);
+		fd = count(argv, &data.i, data.fals);
+		open_file(argv, data.i + 2);
+		exicution(argv, fd, &data);
 	}
 	else
 		perror("few args");
-	if (g_fals == 0)
+	if (data.fals == 0)
 		unlink(argv[1]);
 	return (0);
 }

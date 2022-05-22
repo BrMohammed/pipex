@@ -6,7 +6,7 @@
 /*   By: brmohamm <brmohamm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:19:42 by brmohamm          #+#    #+#             */
-/*   Updated: 2022/02/09 17:43:19 by brmohamm         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:04:51 by brmohamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,13 @@ void	path_finder(char **path, char **c, char **envp);
 int		**count(char **argv, int *i, int fals);
 void	heredoc(char *argv);
 void	close_childe(int g_t, int **fd, int index);
+
+typedef struct s_data
+{
+	int		i;
+	int		fals;
+	in		t;
+	char	**env;
+}t_data;
 
 #endif
