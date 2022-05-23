@@ -29,8 +29,8 @@ re : fclean all
 
 ADD = git add .
 
-read :=	@echo "Add Commit Plz !!" && read -p "-> " enter \
-		&& git commit -m $${enter}
+read :=	@echo "Add Commit' Plz !!" && read -p "-> " enterT && read -p "-> " enterD \
+		&& git commit -m $${enterT} -m  $${enterD}
 
 PU = git push origin master
 
