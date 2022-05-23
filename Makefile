@@ -34,7 +34,6 @@ read :=	@echo "Add Commit' Plz !!" && read -p "-> " enterT && read -p "-> " ente
 
 PU = git push origin master
 
-
 commit = git log --graph --oneline --decorate HEAD^..HEAD
 
 push :
