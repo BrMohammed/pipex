@@ -27,14 +27,18 @@ re : fclean all
 # ./pipex pipex.c "sleep 10" "ls" da
 # ./pipex pipex.c "sleep 2" "cat" "ls" "jfjfjf" da
 
+path:
+	echo $$PWD
+
 ADD = git add .
 
-read :=	@echo "Add Commit' Plz !!" && read -p "-> " enterT && read -p "-> " enterD \
+read :=	@echo "Add Commit' Plz !!" && read -p "Title -> " enterT && read -p "Descreption-> " enterD \
 		&& git commit -m $${enterT} -m  $${enterD}
 
 PU = git push origin master
 
 commit = git log --graph --oneline --decorate HEAD^..HEAD
+
 
 push :
 	@$(commit)
