@@ -1,0 +1,19 @@
+[?1000h[?2004h[?1049h[?1h=[?2004h[1;14r[?12h[?12l[27m[29m[m[H[2J[?25l[14;1H"~/Desktop/pipex/.git/COMMIT_EDITMSG" 11L, 282C[2;1H[34m# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch [m[35mmaster[m
+[34m# Your branch is up to date with '[m[35morigin/master[m[34m'.
+#
+# [m[35mChanges to be committed:[m
+[34m#       [m[32mmodified[m[34m: [m[31m  Makefile[m
+[34m#       [m[32mnew file[m[34m: [m[31m  enterT[m
+[34m#[m
+[94m~                                                                                                                                                                                                                                           [m[13;1H[1m[7m.git/COMMIT_EDITMSG                                                                                                                                                                                                       1,0-1          All[1;1H[?25h[?25l[m[14;226Hs[1;1H[14;226H [1;1H[14;226Hcl[1;1H[14;226H  [1;1H[14;1H[1m-- INSERT --[m[14;13H[K[13;221H[1m[7m1   [1;1H[?25h[?25l[m[38;5;130ms[m[13;21H[1m[7m[+][197C2 [1;2H[?25h[?25l[m[38;5;130ms[m[13;221H[1m[7m3 [1;3H[?25h[?25l[m[38;5;130mq[m[13;221H[1m[7m4 [1;4H[?25h[?25l[m[38;5;130mq[m[13;221H[1m[7m5 [1;5H[?25h[?25l[m[38;5;130mq[m[13;221H[1m[7m6 [1;6H[?25h[?25l[2;12r[m[2;1H[L[1;14r[13;219H[1m[7m2,1 [2;1H[?25h[?25l[3;12r[m[3;1H[L[1;14r[13;219H[1m[7m3,[13CTop[3;1H[?25h[?25l[4;12r[m[4;1H[L[1;14r[13;219H[1m[7m4,[4;1H[?25h[?25l[5;12r[m[5;1H[L[1;14r[13;219H[1m[7m5,[5;1H[?25h[?25l[6;12r[m[6;1H[L[1;14r[13;219H[1m[7m6,[6;1H[?25h[?25l[m[14;1H[K[13;221H[1m[7m0-1[6;1H[?25h[?25l[m[14;1HType  :qa!  and press <Enter> to abandon all changes and exit Vim[6;1H[?25h[?25l[14;226Hç[6;1H[14;226H [6;1H[?25h[?25l[14;226H^D[6;1H[14;226H  [8;1H[1;12r[1;1H[4M[1;14r[9;1H[34m# [m[35mChanges to be committed:[m
+[34m#       [m[32mmodified[m[34m: [m[31m  Makefile[m
+[34m#       [m[32mnew file[m[34m: [m[31m  enterT[m
+[34m#[m[14;1H[K[13;219H[1m[7m12,1  [9CBot[8;1H[?25h[?25l[m[14;226H^D[8;1H[14;226H  [12;1H[13;220H[1m[7m6,[12;1H[?25h[?25l[m[14;226H^D[12;1H[14;226H  [12;1H[?25h
+
+[?2004l[?1l>[?1049lVim: Caught deadly signal HUP
+Vim: preserving files...
+Vim: Finished.
+[14;1H
