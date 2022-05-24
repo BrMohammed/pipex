@@ -32,8 +32,8 @@ path:
 
 ADD = git add .
 
-read :=	@echo "Add Commit' Plz !! " && read -p "Title -> " -a enterT && read  -p "Descreption -> " -d "-" -a enterD\
-		&& git commit -m $${enterT}  -m $${enterD}
+read :=	@echo "Add Commit' Plz !! " && read -p "Title -> " enterT\
+		&& git commit -m $${enterT}
 
 PU = git push origin master
 

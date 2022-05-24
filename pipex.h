@@ -30,13 +30,14 @@ int		ft_strcmp( const char *s1, const char *s2);
 void	path_finder(char **path, char **c, char **envp);
 int		**count(char **argv, int *i, int fals);
 void	heredoc(char *argv);
-void	close_childe(int g_t, int **fd, int index);ß
+void	close_childe(int g_t, int **fd, int index);
 typedef struct s_data
 {
 	int		i;
 	int		fals;
-	in		t;
+	int		t;
 	char	**env;
+	
 }t_data;
 
 #endif
